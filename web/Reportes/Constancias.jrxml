@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Constancias" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b0b1bc0b-f4f4-4d70-941d-c186799881da">
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Base_Proyecto"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="214"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="779"/>
+	<subDataset name="Dataset1" uuid="2239147a-07f3-4111-8769-936faaebe0f0">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+	</subDataset>
+	<parameter name="CODIGO" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT td.ID_CONSTANCIA, td.NRO_CONSTANCIA, td.NRO_EXPENDIENTE, tc.NOMBRE ESCUELA, td.ALUMNO, td.DOCENTE_LINEA, td.CODIGO_TESIS, td.TITULO_TESIS, td.DICTAMEN,
+                    td.FECHA, CONCAT('NO EXISTE DUPLICIDAD DEL PROYECTO DE INVESTIGACION EN LA BASE DE DATOS DE LA UNIDAD DE INVESTIGACION  DE LA FICSA') AS DICT, CONCAT(tp.A_PATERNO,' ',tp.A_MATERNO,', ',tp.NOMBRE) AS DALUMNO, CONCAT(ta.A_PATERNO,' ',ta.A_MATERNO,', ',ta.NOMBRE)
+                    AS DASESOR FROM `constancia` td INNER JOIN `alumno` tp ON tp.ID_ALUMNO=td.ALUMNO INNER JOIN `linea_docente` tb ON
+                    tb.ID_RELACION=td.DOCENTE_LINEA INNER JOIN `docente` ta ON ta.ID_DOCENTE=tb.DOCENTE_ID INNER JOIN `escuela` tc  ON 
+                    tc.ID_ESCUELA=tp.ESCUELA WHERE td.ID_CONSTANCIA =  $P{CODIGO} ]]>
+	</queryString>
+	<field name="ID_CONSTANCIA" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="ID_CONSTANCIA"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="constancia"/>
+	</field>
+	<field name="NRO_CONSTANCIA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NRO_CONSTANCIA"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="constancia"/>
+	</field>
+	<field name="NRO_EXPENDIENTE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NRO_EXPENDIENTE"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="constancia"/>
+	</field>
+	<field name="ESCUELA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ESCUELA"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="escuela"/>
+	</field>
+	<field name="ALUMNO" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="ALUMNO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="constancia"/>
+	</field>
+	<field name="DOCENTE_LINEA" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="DOCENTE_LINEA"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="constancia"/>
+	</field>
+	<field name="CODIGO_TESIS" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CODIGO_TESIS"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="constancia"/>
+	</field>
+	<field name="TITULO_TESIS" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TITULO_TESIS"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="constancia"/>
+	</field>
+	<field name="DICTAMEN" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="DICTAMEN"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="constancia"/>
+	</field>
+	<field name="FECHA" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="FECHA"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="constancia"/>
+	</field>
+	<field name="DICT" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DICT"/>
+	</field>
+	<field name="DALUMNO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DALUMNO"/>
+	</field>
+	<field name="DASESOR" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DASESOR"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="149" splitType="Stretch">
+			<image>
+				<reportElement x="20" y="0" width="59" height="43" uuid="6fcb4fac-43a7-4154-96d2-fd0cc0a92e21"/>
+				<imageExpression><![CDATA["C:/Users/JhanxD/Documents/NetBeansProjects/Proyecto_Taller/build/web/WEB-INF/classes/reportes/logoUNPRG.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="84" y="20" width="387" height="15" uuid="d52f46c4-cf1c-4a9c-a25b-881167522f23"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[FACULTAD DE INGENIERÍA DE CIVIL DE SISTEMAS Y DE ARQUITECTURA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="3" width="325" height="17" uuid="20bbea74-07ef-4953-b234-16e60e2552fb"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD NACIONAL PEDRO RUIZ GALLO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="94" y="35" width="387" height="17" uuid="be10f18b-1297-48a0-b3c8-518beb4523e2"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[UNIDAD DE INVESTIGACION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="60" width="430" height="18" uuid="368b50b2-9f40-4e65-8f28-0763cd178578"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SISTEMA DE EVALUACION DEL TRABAJO FINAL DE CARRERA PROFESIONAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="92" y="78" width="387" height="15" uuid="8a5bf809-fd28-4332-8ec4-693c442ab1f5"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FORMATO N°2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-18" y="100" width="586" height="20" uuid="006132fa-7c36-4db7-aa60-dc533ffb2337"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONSTANCIA DE NO DUPLICIDAD PARA TEMAS DE PROYECTO DE INVESTIGACION ]]></text>
+			</staticText>
+			<image>
+				<reportElement x="490" y="3" width="59" height="43" uuid="7784945a-0851-4e06-ad71-3a8a2d016cd4"/>
+				<imageExpression><![CDATA["C:/Users/JhanxD/Documents/NetBeansProjects/Proyecto_Taller/web/Reportes/Logo_FICSA_vectorial_UNPRG.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="420" splitType="Stretch">
+			<staticText>
+				<reportElement x="60" y="-1" width="140" height="17" uuid="2cf3adc7-83b3-4e4b-93d8-84d58b4329cb"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NRO DE CONSTANCIA]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="210" y="18" width="170" height="17" uuid="cff6fcb6-bbc5-4611-aedc-84ac576800b5"/>
+				<textFieldExpression><![CDATA[":     "+$F{NRO_EXPENDIENTE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="210" y="38" width="295" height="44" uuid="db664332-68ae-453c-8e9f-9e02b2fe12df"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA[":     "+$F{TITULO_TESIS}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="60" y="38" width="140" height="17" uuid="7d1789f2-5172-4748-ad32-bd7b1bbc7eaa"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOMBRE DEL PROYECTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="18" width="140" height="17" uuid="b063ff8c-03e0-4bc2-ac92-c7845558e330"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NRO DE EXPEDIENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="111" width="149" height="17" uuid="ce8ff44d-d9bb-4aa7-aaf1-b807f4381b31"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MODALIDAD DE TITULACION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="90" width="140" height="17" uuid="154f0a1b-8718-48a2-a69a-417709e96663"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CODIGO DEL PROYECTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="61" y="133" width="70" height="17" uuid="52e6bd11-9925-45e6-8aeb-04e52db4d96f"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AUTOR (ES)]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="210" y="133" width="220" height="17" uuid="448ccf33-261a-450f-9a33-02ee5ebf03d4"/>
+				<textFieldExpression><![CDATA[":     "+$F{DALUMNO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="209" y="90" width="185" height="16" uuid="35817266-9f8f-4006-9207-af50e45cf761"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[":     "+$F{CODIGO_TESIS}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="61" y="156" width="139" height="17" uuid="ed329b01-8f24-4ceb-9bac-407fee1771b3"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD DE ORIGEN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="61" y="180" width="138" height="20" uuid="539f33a4-2c40-4984-b09c-9c9473b9c45f"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ESCUELA PROFESIONAL]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="210" y="180" width="303" height="20" uuid="bd2cbd6c-19eb-4f8c-b81f-6f3888d4bc06"/>
+				<textFieldExpression><![CDATA[":     "+$F{ESCUELA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="210" y="216" width="221" height="17" uuid="6286297a-3903-461f-8d68-28a2d521bd07"/>
+				<textFieldExpression><![CDATA[":     "+$F{DASESOR}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="60" y="216" width="70" height="17" uuid="38dfdc61-50f8-42a3-a155-364b12f7aab4"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ASESOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="338" y="340" width="170" height="17" uuid="0ab60d9b-f28e-433d-9fa8-543e8141c41e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Ing. Gilberto Martin Ampuero Pasco]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="338" y="357" width="170" height="17" uuid="f473b516-17da-41f5-9f37-d7c55e3e5ed0"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Director(es) Unidad de Investigación]]></text>
+			</staticText>
+			<line>
+				<reportElement x="335" y="339" width="177" height="1" uuid="437e901f-1b00-4479-8362-0b1687327fa8"/>
+			</line>
+			<staticText>
+				<reportElement x="60" y="240" width="70" height="17" uuid="85db18dc-be03-4aa7-855c-47780a8e24e8"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DICTAMEN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="61" y="280" width="70" height="17" uuid="c7852dbf-454e-4ddc-9b7c-990d2fdf89ce"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="209" y="281" width="100" height="14" uuid="c447f216-dd76-43e2-a7ad-14aac7b6a5bf"/>
+				<textFieldExpression><![CDATA[":     "+$F{FECHA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="210" y="156" width="221" height="17" uuid="15f7a9b7-1e5c-4e88-a704-21436f678cc3"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[:     Universidad Nacional Pedro Ruiz Gallo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="210" y="111" width="221" height="17" uuid="41c5eee7-a71a-44e5-bdea-66c103a87d95"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[:     Tesis]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="210" y="240" width="328" height="30" uuid="4de2047d-2e41-4929-9de2-c4f0be7aaa09"/>
+				<textElement textAlignment="Justified">
+					<font size="9" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[":     "+$F{DICT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="210" y="-1" width="170" height="13" uuid="c7be20c4-7e48-4045-9786-69e7e1d566d0"/>
+				<textFieldExpression><![CDATA[":     "+$F{NRO_CONSTANCIA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<pageFooter>
+		<band height="223" splitType="Stretch">
+			<rectangle>
+				<reportElement x="337" y="130" width="207" height="93" uuid="1a1e4ee3-2dae-4254-873f-4bf2dcc9c9d1"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1" y="130" width="337" height="93" uuid="32c40454-0b2b-45ec-9c27-ee0d720a7802"/>
+			</rectangle>
+			<textField>
+				<reportElement x="4" y="130" width="330" height="93" uuid="841a802e-046b-4073-8aee-bb8767530aed"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Yo,  _____________________________________________________________, identificado con DNI N° _______________ Autorizo, para que el contenido de mi proyecto de tesis sea publicada y transferida via internet en el repositorio de la Universidad y Renati, al amparo de la ley N° 30035, que regula el Repositorio Nacional Digital de Ciencia, Tecnologia e Innovación de Acceso Abierto y del DL. 822 Ley sobre el derecho de Autor, y doy fe, que mi Tesis ha sido elaborado con honestidad cientifica; si se presentara a futuro algun hallazgo de plagio, sere el unico responsable."]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="350" y="205" width="177" height="1" uuid="ad14e880-19e6-4ff8-88bb-16e0d3964a89"/>
+			</line>
+			<staticText>
+				<reportElement x="353" y="206" width="170" height="17" uuid="cbf985c0-48b8-45a2-ab1c-5e513676ccf0"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Firma y Huella digital]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="45" y="4" width="460" height="17" uuid="608182f3-01cc-48cc-a0b2-4582ec040672"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONFORMIDAD DEL RESUMEN Y ALMACENAMIENTO EN BASE DE DATOS]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="4" y="24" width="329" height="100" uuid="14ab49f9-d765-4435-a126-f4be6c1399f3"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="14" y="24" width="140" height="19" uuid="97807bbf-c622-4026-9955-3895f2e1fa91"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Fecha de Sustentacion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="43" width="140" height="19" uuid="5a9bd7af-545e-4396-84a4-93009dad9f36"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Calificativo del jurado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="62" width="140" height="19" uuid="4fccada2-e47c-4013-88fc-253ca36d2da6"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Nombre del Archivo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="81" width="140" height="19" uuid="d533c8fd-3be6-4601-acbf-ed140675c431"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Diretorio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="102" width="140" height="19" uuid="de605e86-aed0-44df-9b61-39f5660963b9"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Fecha de Almacenamiento]]></text>
+			</staticText>
+			<line>
+				<reportElement x="4" y="43" width="329" height="1" uuid="f5b58ab6-d70d-4797-b53c-924a685c1b7f"/>
+			</line>
+			<line>
+				<reportElement x="4" y="62" width="329" height="1" uuid="42ea4a23-c3aa-4e4d-9dc0-afa655966736"/>
+			</line>
+			<line>
+				<reportElement x="4" y="81" width="329" height="1" uuid="2a5b65ed-7337-46d9-ac8a-220f9dd2cbe2"/>
+			</line>
+			<line>
+				<reportElement x="4" y="100" width="329" height="1" uuid="87a5c5fe-fade-4c05-a206-2146f84108aa"/>
+			</line>
+			<line>
+				<reportElement x="148" y="24" width="1" height="100" uuid="454f6f8f-9ec5-4ace-ba05-c6a814997c93"/>
+			</line>
+			<rectangle>
+				<reportElement x="333" y="24" width="211" height="100" uuid="31132081-3a3d-4a8d-9304-307396f8f3ab"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="357" y="65" width="170" height="17" uuid="40feecf4-0a37-434a-8e7a-346dd99a812f"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Ing. Gilberto Martin Ampuero Pasco]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="357" y="82" width="170" height="17" uuid="97c94c64-bddc-4485-83ab-861a86617d6c"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Director(es) Unidad de Investigación]]></text>
+			</staticText>
+			<line>
+				<reportElement x="354" y="64" width="177" height="1" uuid="ccb6211f-3afa-47eb-9089-f9e06feffa35"/>
+			</line>
+		</band>
+	</pageFooter>
+</jasperReport>

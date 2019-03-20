@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="Proyecto_Taller_PersistenciaPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>Beans.Constancia</class>
+    <class>Beans.Facultad</class>
+    <class>Beans.LineaDocente</class>
+    <class>Beans.Alumno</class>
+    <class>Beans.Escuela</class>
+    <class>Beans.Tesis</class>
+    <class>Beans.Docente</class>
+    <class>Beans.Observacion</class>
+    <class>Beans.LineaInvestigacion</class>
+    <class>Beans.Jurado</class>
+    <class>Beans.session.Perfil</class>
+    <class>Beans.session.Usuario</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/proyecto?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="12345678"/>
+    </properties>
+  </persistence-unit>
+</persistence>

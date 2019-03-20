@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DecretodeAprobacion" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e8328453-aa40-4de5-baa3-b4888700ca5f">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Base_Proyecto"/>
+	<parameter name="codiTESIS" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT CONCAT(ta.NOMBRE,' ', ta.A_PATERNO,' ',ta.A_MATERNO) AS DALUMNO, te.NOMBRE AS ESUELA, 
+ta.GRADO_ACADEMICO AS GRADO, tc.TITULO_TESIS AS TITULO, tc.NRO_EXPENDIENTE as EXPEDIENTE, 
+tc.CODIGO_TESIS AS CODIGO, tu.FECHA_FIN AS FECHA FROM `tesis` ts INNER JOIN `constancia` tc ON 
+tc.ID_CONSTANCIA=ts.CODIGO_C INNER JOIN `alumno` ta ON tc.ALUMNO=ta.ID_ALUMNO INNER JOIN 
+`observacion` tu ON tu.ID_TESIS=ts.ID_TESIS INNER JOIN `escuela` te ON ta.ESCUELA=te.ID_ESCUELA 
+WHERE ts.ID_TESIS =  $P{codiTESIS}  LIMIT 0,1]]>
+	</queryString>
+	<field name="DALUMNO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DALUMNO"/>
+	</field>
+	<field name="ESUELA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ESUELA"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="escuela"/>
+	</field>
+	<field name="GRADO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="GRADO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="alumno"/>
+	</field>
+	<field name="TITULO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TITULO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="constancia"/>
+	</field>
+	<field name="EXPEDIENTE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="EXPEDIENTE"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="constancia"/>
+	</field>
+	<field name="CODIGO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CODIGO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="constancia"/>
+	</field>
+	<field name="FECHA" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="FECHA"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="observacion"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="78" splitType="Stretch">
+			<staticText>
+				<reportElement x="86" y="19" width="370" height="17" uuid="d7544ed4-ac1b-4120-a854-93d55e7e7429"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD NACIONAL PEDRO RUIZ GALLO]]></text>
+			</staticText>
+			<image>
+				<reportElement x="20" y="10" width="53" height="68" uuid="eec9197f-2faf-423b-bddd-391b0f401aa8"/>
+				<imageExpression><![CDATA["C:/Users/JhanxD/Documents/NetBeansProjects/Proyecto_Taller/build/web/WEB-INF/classes/reportes/logoUNPRG.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="86" y="36" width="370" height="15" uuid="7e89f624-7d05-4c04-b4b7-dd1637f19b9e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[FACULTAD DE INGENIERÍA DE CIVIL DE SISTEMAS Y DE ARQUITECTURA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="86" y="51" width="370" height="17" uuid="0e8a48a2-92be-47a8-a85a-eab96b46bec6"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIDAD DE INVESTIGACION]]></text>
+			</staticText>
+			<image>
+				<reportElement x="490" y="9" width="53" height="68" uuid="068f1384-20da-4bde-9a9b-9ef8dbc981ea"/>
+				<imageExpression><![CDATA["C:/Users/JhanxD/Documents/NetBeansProjects/Proyecto_Taller/web/Reportes/Logo_FICSA_vectorial_UNPRG.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="86" y="0" width="370" height="17" uuid="909175ca-87fd-4fe6-88eb-023a6455ff63"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DECRETO DIRECTORIAL N° 056-2017-UNPRG-FICSA-UI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="210" y="20" width="80" height="22" uuid="c182d37b-4db5-4e0c-bb93-3b676808676f"/>
+				<text><![CDATA[Lambayeque ,]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="290" y="21" width="52" height="20" uuid="704a4546-755c-4493-bc80-b4cae51cbbf5"/>
+				<textFieldExpression><![CDATA[$F{FECHA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="634" splitType="Stretch">
+			<textField>
+				<reportElement x="20" y="30" width="510" height="70" uuid="6a00231d-c91c-4ddb-89c5-5cf39a7e0768"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA["El Expediente N°"+$F{EXPEDIENTE}+" presentado por el Presidente de Jurado nombrado por Resolución Directoral N°004-2017-UNPRG-FICSA-UI, en el que consta que el Jurado da por aprobado el Proyecto de Tesis titulado:"+$F{TITULO}+" , cuyo responsable es "+$F{GRADO}+" en la "+$F{ESUELA}+" : "+$F{DALUMNO}+"."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="10" width="100" height="20" uuid="bfa61c89-7b39-4c80-aeb8-2eea68a90d68"/>
+				<text><![CDATA[VISTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="110" width="100" height="20" uuid="12087ba0-3b85-44ba-a91d-ec4c67a2b0e5"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONSIDERANDO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="20" y="130" width="510" height="110" uuid="59ef57c9-4570-49a6-9021-45df9454913a"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA["Que, en concordancia con el Artículo 50° de la ley Universitaria 30220, 'el Vicerrectorado de Investigacion, es el organismo de más alto nivel en la Universidad en el ámbito de la investigación'  y el Artículo 95° del Estatuto UNPRG, 'es el que orienta, organiza y coordina los proyectos y actividades de investigación' según Reglamento del Vicerrectorado de Investigación UNPRG aprobado por Resolución N°380-2016-CU del 28/12/2016, en el anexo N°4 Art 9 - inciso e 'Con la conformidad de los dos tercios (2/3) o unanimidad de los Miembros del Jurado (o por la ausencia de sus observaciones), terminada los quince (15) días, el Director de la Unidad de Investigación, emitirá el Decreto de Aprobación del Proyecto', por lo que procede a formalizar el pronunciamiento contenido en el documento citado en la parte visto."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="20" y="250" width="510" height="50" uuid="4918baa4-9a8b-413f-8101-2b357ec2ec35"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA["En ejercicio de las atribuciones que confieren al Director de la Universidad Investigación del Artículo 37° de la Ley Universitaria 30220 y el Artículo 47° del Estatuto de la Universidad y de las funciones que le establece el Artículo 17° del reglamento del Vicerrectorado de Investigación de la Universidad."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="310" width="100" height="20" uuid="35466476-13f6-45bf-b425-d7d863916964"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SE DECRETA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="330" width="10" height="20" uuid="5efbe3a2-c840-4d33-a0b4-d4a79928b80a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[1.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="30" y="330" width="500" height="50" uuid="7ab39f27-a3be-4cbe-8b39-62a9c9dc52f0"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA["OFICIALIZAR LA APROBACIÓN DEL PROYECTO DE TESIS titulado: "+$F{TITULO}+" (Código : "+$F{CODIGO}+"), siendo él(la) responsable  "+$F{DALUMNO}+"."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="390" width="10" height="20" uuid="0942d2af-df1a-47e5-a688-3bdf2327865b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[2.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="30" y="390" width="500" height="50" uuid="54a32289-701c-416d-8a80-01354305f3fa"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA["Para efectos de la aplicación de lo dispuesto en el Art. 11 del Anexo N° 4 del Reglamento del Vicerrectorado de Investigación UNPRG,  establece 'Los trabajos de Tesis de Pre grado tienen como plazo máximo de ejecución de (02) años para su desarrollo a partir de la expedición del Decreto de Aprobación'."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="450" width="10" height="20" uuid="14d5905b-65d4-4ee5-8ef5-dda527d2e6c9"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[3.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="30" y="450" width="500" height="40" uuid="23d0a1f9-6565-4c9a-afcb-8d684aba1973"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA["Dar a conocer el presente decreto a los Miembros del Jurado, Asesor, responsables del proyecto, Decanato, "+$F{ESUELA}+", expediente de tesis y Archivo."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="170" y="510" width="387" height="17" uuid="ef038288-62c4-4ceb-8dcd-1da2baa5e863"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REGÍSTRESE, COMUNÍQUESE Y ARCHÍVESE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="82" y="580" width="387" height="17" uuid="fb2aa766-2630-46fd-9787-65216d62c1a8"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[M. A. ING. EDWARD RONALD HARO MALDONADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="84" y="597" width="387" height="17" uuid="935cf76e-53cd-4391-8db4-c6fb7679255d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIRECTOR(es)]]></text>
+			</staticText>
+			<line>
+				<reportElement x="109" y="570" width="351" height="2" uuid="075d61e5-0907-4b4a-8ae1-6392b24cfdfd"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="9" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="8" splitType="Stretch"/>
+	</summary>
+</jasperReport>

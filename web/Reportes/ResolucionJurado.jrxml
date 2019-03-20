@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ResolucionJurado" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a801e6f5-3d3d-41c1-a85e-2419b934ca2c">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Base_Proyecto"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="jurado1" class="java.lang.String"/>
+	<parameter name="jurado2" class="java.lang.String"/>
+	<parameter name="jurado3" class="java.lang.String"/>
+	<parameter name="codacta" class="java.lang.Integer"/>
+	<parameter name="fechaemitido" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT  ta.ID_TESIS AS actajurado, tc.TITULO_TESIS AS titulotesis, 
+    CONCAT(td.A_PATERNO,' ',td.A_MATERNO,', ',td.NOMBRE) AS alumno, te.NOMBRE escuela, tc.NRO_EXPENDIENTE 
+    expediente FROM `jurado` ta INNER JOIN `tesis` tb ON ta.ID_TESIS=tb.ID_TESIS INNER JOIN `constancia` tc 
+    ON tb.CODIGO_C = tc.ID_CONSTANCIA INNER JOIN `alumno` td ON tc.ALUMNO=td.ID_ALUMNO INNER 
+    JOIN `escuela` te ON td.ESCUELA = te.ID_ESCUELA WHERE ta.ID_TESIS =  $P{codacta}  LIMIT 0,1]]>
+	</queryString>
+	<field name="actajurado" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="actajurado"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="jurado"/>
+	</field>
+	<field name="titulotesis" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="titulotesis"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="constancia"/>
+	</field>
+	<field name="alumno" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="alumno"/>
+	</field>
+	<field name="escuela" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="escuela"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="escuela"/>
+	</field>
+	<field name="expediente" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="expediente"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="constancia"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="145" splitType="Stretch">
+			<staticText>
+				<reportElement x="90" y="61" width="387" height="17" uuid="17f6d6bc-8d2c-41e6-bb12-33155ef85122"/>
+				<textElement textAlignment="Center" markup="styled">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIDAD DE INVESTIGACION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="78" y="40" width="410" height="15" uuid="c8c2fcd4-a666-4157-aa19-491cfb8b3deb"/>
+				<textElement textAlignment="Center" markup="styled">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FACULTAD DE INGENIERÍA DE CIVIL DE SISTEMAS Y DE ARQUITECTURA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="115" y="21" width="325" height="17" uuid="c6dfcf99-fc21-4b0c-9549-807c90f357b4"/>
+				<textElement textAlignment="Center" markup="styled">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD NACIONAL PEDRO RUIZ GALLO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="90" width="387" height="15" uuid="26e3458e-47c4-4508-96f2-d9f9c2e67d1b"/>
+				<textElement textAlignment="Center" markup="styled">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RESOLUCION DIRECTORIAL N° 004-2017-UNPRG-FICSA-UI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="105" width="70" height="17" uuid="87f6ceba-8c5a-44c4-ae51-05b82ddc39e6"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Lambayeque,]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="250" y="105" width="160" height="16" uuid="4195063c-3aa6-4a19-aaa3-a0d3ffad62ce"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fechaemitido}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="478" splitType="Stretch">
+			<staticText>
+				<reportElement x="40" y="10" width="70" height="15" uuid="f41b5992-c13d-40f7-9359-be918e0e4007"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" isBold="false"/>
+				</textElement>
+				<text><![CDATA[VISTO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="30" y="30" width="491" height="70" uuid="fef7958c-1a41-4a13-93e6-ed13285eb3ee"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA["EL ACTA DE ASIGNACION DEL JURADO N° 00"+$F{actajurado}+", presentado por el Comite Cientifico FICSA, en el que consta la confimacion del jurado del Anteproyecto de Tesis titulado: "+$F{titulotesis}+", cuyo responsable es "+$F{alumno}+" de la "+$F{escuela}+" (EXPEDIENTE N° "+$F{expediente}+" )."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="40" y="100" width="90" height="15" uuid="db4b3345-3aac-4f69-aa9e-5ffd3bcc33a1"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONSIDERANDO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="32" y="120" width="491" height="70" uuid="caabc12f-e39d-4264-aea0-3f8cb62f109c"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA["Que el Manual de Procedimientos Administrativos para la Gestión de la Investigación en la Universidad, aprovado por el Vicerrectorado de Investigación, que en concordancia con el Articulo 50° de la Ley Universitaria 30220 es el organismo de mas alto nivel en la Universidad, en el ámbito de la investigación y con el Articulo 95° del Estatuto, es el que orienta, organiza y coordina los proyectos y actividades de investigación, establece que la unidad de investigación de la Facultad emite la Resolucion de Aprobación del Anteproyecto de Tesis. "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="32" y="200" width="491" height="50" uuid="af71c874-966b-48bf-a449-ade4dea5985c"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA["En ejercicio de las atribuciones que confieren al Director de la Unidad de Investigación, el Articulo 37° de la Ley Universitaria 30220 y el Articulo 47° del Estatuto de la Universidad y, de las funciones que le establece el Articulo 18° del Regimiento del Vicerrectorado de Investigación de la Universidad."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="40" y="250" width="90" height="15" uuid="fb16bdbb-95e3-473d-be85-f495767a638d"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SE RESUELVE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="270" width="20" height="15" uuid="631e85c0-ee09-474e-bbab-1b5e8efd2ecd"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[1.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="50" y="270" width="473" height="70" uuid="15de6f38-a5f4-4724-9137-3f81e0cd1154"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA["OFICIALIZAR LA ASIGNACIÓN DEL JURADO DEL ANTEPROYECTO DE TESIS titulado: "+$F{titulotesis}+", cuyo responsable es "+$F{alumno}+"."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="30" y="350" width="20" height="15" uuid="0b58c72e-8b01-4237-a0ec-7553ea8b04a4"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[2.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="50" y="350" width="473" height="15" uuid="3b4e91b2-b8c7-484e-bfc9-2d06408a42ac"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA["El jurado estará conformado por los siguientes docentes : "]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="290" y="370" width="70" height="15" uuid="682d5c1e-4129-4f4a-a2d8-41274c18f43f"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" isBold="false"/>
+				</textElement>
+				<text><![CDATA[PRESIDENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="390" width="70" height="15" uuid="8970d274-d570-4fba-8513-7f890da48553"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" isBold="false"/>
+				</textElement>
+				<text><![CDATA[SECRETARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="410" width="70" height="15" uuid="66a60f3a-21c5-47c3-9ea3-2e8bd15b54ea"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" isBold="false"/>
+				</textElement>
+				<text><![CDATA[VOCAL]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="50" y="370" width="200" height="15" uuid="cfd6bcec-d542-4775-b2d2-54cb9b1dbd50"/>
+				<textFieldExpression><![CDATA[$P{jurado1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="50" y="390" width="200" height="15" uuid="d9a54755-856d-4ff3-b590-eff34a2d9329"/>
+				<textFieldExpression><![CDATA[$P{jurado2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="50" y="410" width="200" height="15" uuid="73beedb6-1a16-423e-9a41-2bf9fb69930c"/>
+				<textFieldExpression><![CDATA[$P{jurado3}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="32" y="440" width="20" height="15" uuid="d26d4fb6-0c34-4f08-8983-c3d8ff62ac6b"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[3.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="52" y="440" width="473" height="30" uuid="b93e2f3a-5a15-41e2-840a-b95145574b47"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA["Dar a conocer la presente Resolución al Decanato, Miembros del Jurado, Asesor, Responsable del Anteproyecto, Expediente del Caso y Archivo "]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<pageFooter>
+		<band height="107" splitType="Stretch">
+			<staticText>
+				<reportElement x="90" y="10" width="387" height="17" uuid="19dbca1a-b5d8-4803-9e8d-1d641df03326"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REGÍSTRESE, COMUNÍQUESE Y ARCHÍVESE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="93" y="60" width="387" height="17" uuid="9ddea007-d424-4033-9474-0c6b61186e43"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[M. A. ING. EDWARD RONALD HARO MALDONADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="95" y="77" width="387" height="17" uuid="e427092e-e5aa-4496-8639-6ed5caf49c08"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIRECTOR(es)]]></text>
+			</staticText>
+			<line>
+				<reportElement x="120" y="50" width="351" height="2" uuid="ecd3dbf8-ad99-46e7-b638-ee3854d1d638"/>
+			</line>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="23" splitType="Stretch"/>
+	</summary>
+</jasperReport>

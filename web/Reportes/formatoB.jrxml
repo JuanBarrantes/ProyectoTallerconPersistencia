@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report2" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0f213e5f-0c01-44d7-a6fa-f7c19495448e">
+	<property name="ireport.zoom" value="1.210000000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="193"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Base_Proyecto"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="presidente" class="java.lang.String"/>
+	<parameter name="miembro1" class="java.lang.String"/>
+	<parameter name="miembro2" class="java.lang.String"/>
+	<parameter name="codaconst" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT ta.CODIGO_TESIS, ta.TITULO_TESIS, CONCAT(tb.A_PATERNO,' ',tb.A_MATERNO,', ',tb.NOMBRE) AS autor, 
+CONCAT(td.A_PATERNO,' ',td.A_MATERNO,', ',td.NOMBRE) AS asesor, tu.FECHA_FIN AS fecha FROM `constancia` ta INNER JOIN `alumno` tb 
+ON ta.ALUMNO=tb.ID_ALUMNO INNER JOIN `linea_docente` tc ON ta.DOCENTE_LINEA = tc.ID_RELACION 
+INNER JOIN `docente` td ON tc.DOCENTE_ID=td.ID_DOCENTE INNER JOIN `tesis` ts ON ta.ID_CONSTANCIA=ts.CODIGO_C 
+INNER JOIN `observacion` tu ON ts.ID_TESIS=tu.ID_TESIS WHERE ts.ID_TESIS = $P{codaconst} LIMIT 0,1]]>
+	</queryString>
+	<field name="CODIGO_TESIS" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CODIGO_TESIS"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="constancia"/>
+	</field>
+	<field name="TITULO_TESIS" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TITULO_TESIS"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="constancia"/>
+	</field>
+	<field name="autor" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="autor"/>
+	</field>
+	<field name="asesor" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="asesor"/>
+	</field>
+	<field name="fecha" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="fecha"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="observacion"/>
+	</field>
+	<title>
+		<band height="150" splitType="Stretch">
+			<image>
+				<reportElement x="10" y="10" width="53" height="68" uuid="78379a3e-c5c9-43b6-b01b-130df2839973"/>
+				<imageExpression><![CDATA["C:/Users/JhanxD/Documents/NetBeansProjects/Proyecto_Taller/build/web/WEB-INF/classes/reportes/logoUNPRG.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="86" y="19" width="370" height="17" uuid="bc772d80-faa0-4ff2-bc3e-7a4488da6547"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD NACIONAL PEDRO RUIZ GALLO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="86" y="36" width="370" height="15" uuid="fdce8f3f-3f5b-4a52-8d5b-3424c0cd7223"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[FACULTAD DE INGENIERÍA DE CIVIL DE SISTEMAS Y DE ARQUITECTURA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="86" y="51" width="370" height="17" uuid="60a6651d-23d5-443d-8aba-0d5fc1fc4fcb"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[UNIDAD DE INVESTIGACION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="86" y="83" width="370" height="16" uuid="1538bd8c-3817-4890-a17c-6e84f54064f8"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SISTEMA DE EVALUACIÓN DEL TRABAJO FINAL DE CARRERA PROFESIONAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="99" width="472" height="14" uuid="6113df6f-741b-4ac4-95ac-42f7e808dc95"/>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="7"/>
+				</textElement>
+				<text><![CDATA[(Base en el Modelo de Calidad para la acreditación de las carreras profesionales de Ingeniería y Arquitectura – Dimension II – Factor 3 – Estandar 47)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="120" y="131" width="308" height="16" uuid="970e702f-2b13-4947-9f8d-fcec5f1a6530"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ACTA DE APROBACIÓN DEL ANTEPROYECTO DE TESIS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="233" y="115" width="76" height="16" uuid="9c9d074a-4a01-41b1-8f1a-92e67c0ddac9"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FORMATO B]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="423" splitType="Stretch">
+			<staticText>
+				<reportElement x="30" y="12" width="161" height="16" uuid="dc89cc91-ef93-4f2b-8b2a-1fc4b45cdbe3"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<text><![CDATA[A) NOMBRE DEL PROYECTO:	]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="29" y="28" width="497" height="60" uuid="a9c2e5ba-cd66-4475-8819-d9971a46e4d9"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="42" y="72" width="147" height="16" uuid="4cf1deb8-1245-4f3a-a6c9-06601b35dad4"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[B) CÓDIGO DEL PROYECTO:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="29" y="71" width="496" height="1" uuid="0b610f9f-81ab-46d1-a1a6-817ab00ae8c0"/>
+			</line>
+			<staticText>
+				<reportElement x="30" y="104" width="130" height="16" uuid="0392048c-ccdf-4776-b8ba-2dd3cf0ccc14"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<text><![CDATA[C) AUTOR (ES):]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="29" y="121" width="349" height="32" uuid="0ba3fbbc-f552-4bc2-a108-11b8158e35d3"/>
+			</rectangle>
+			<line>
+				<reportElement x="29" y="137" width="349" height="1" uuid="58a1a4a3-4eb7-469d-bd3e-598f05bce157"/>
+			</line>
+			<staticText>
+				<reportElement x="30" y="167" width="130" height="16" uuid="0fef5ab6-ee7d-40aa-83f8-d7e4823b87c7"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<text><![CDATA[D) ASESOR:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="29" y="184" width="349" height="16" uuid="39e778c4-d362-459f-8788-db0b06dd068a"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="30" y="224" width="130" height="21" uuid="e129f8cd-2b6c-499e-bd06-77969c8da08a"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<text><![CDATA[E) JURADO:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="29" y="246" width="349" height="48" uuid="73358b2b-f279-4dae-b286-f16873894c98"/>
+			</rectangle>
+			<line>
+				<reportElement x="29" y="262" width="349" height="1" uuid="ece27bd5-b777-41b1-adda-6b0af20f1521"/>
+			</line>
+			<line>
+				<reportElement x="29" y="278" width="349" height="1" uuid="6ca2fa4d-4dc4-4912-a074-32940a72a364"/>
+			</line>
+			<staticText>
+				<reportElement x="36" y="246" width="68" height="16" uuid="181ef1aa-e27c-42f7-8c89-f042785c7f70"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Presidente     :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="36" y="262" width="68" height="16" uuid="1c809829-1901-432d-a15b-4bf018195e7a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Secretario   :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="36" y="278" width="68" height="16" uuid="d00d1a77-cb67-4281-b60e-a6817385373e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Vocal :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="110" y="246" width="258" height="16" uuid="baa6fde7-54dd-454e-be48-06219384e438"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{presidente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="262" width="258" height="16" uuid="243570a6-20fa-493b-875c-90d4c4056466"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{miembro1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="278" width="258" height="16" uuid="f3511ae5-2adf-46b9-aabe-827597056dd1"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{miembro2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="26" y="330" width="130" height="15" uuid="44049e4a-46ce-42b8-8133-49de285bfa07"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<text><![CDATA[F) DICTÁMEN:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="29" y="348" width="497" height="48" uuid="0b5801d0-00e9-4c4f-b588-ae351c77f7d5"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="37" y="350" width="480" height="43" uuid="9bcdf0c5-83a7-4672-b26d-43bb8d0e41ad"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<text><![CDATA[El anteproyecto de Tesis se encuentra conforme y el presente Jurado autoriza para el (los) Tesista (s) continúen con el desarrollo del mismo, dentro de los plazos establecidos en el Reglamento de la Facultad.  ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="191" y="74" width="239" height="14" uuid="1d5a212b-a2ef-47b9-8b43-e6b3e1513f46">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1bd96649-17c0-4981-838f-4572be3fb6ef"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CODIGO_TESIS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="30" y="30" width="495" height="41" uuid="099925bd-12a5-42fb-9927-b6db90009a20">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a85e6880-bd73-4c32-be54-9d36d7a713e7"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{TITULO_TESIS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="42" y="121" width="279" height="13" uuid="7986238a-bfd7-4092-91bf-89fab13c75e2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f5e24986-2838-4876-a1e3-f5ead6bdcb45"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{autor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="40" y="184" width="281" height="17" uuid="947a8fb7-1e63-4758-adec-4ce54c25b993">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bbb73837-c186-4881-9066-3ad2e87fbf6f"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{asesor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="155">
+			<line>
+				<reportElement x="79" y="12" width="142" height="1" uuid="450c68a3-33f8-41cc-8b06-d7b654ba5a89"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="203" y="55" width="142" height="1" uuid="729b1ea1-29cd-4d12-a102-03adecefe0a6"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="314" y="12" width="142" height="1" uuid="95ca7669-3f24-47f8-8189-5a5837c13809"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="314" y="13" width="142" height="20" uuid="9264af8f-d0ca-4cf8-a48b-d838d678b1e6"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Secretario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="203" y="56" width="142" height="20" uuid="a742d88c-0483-415e-8a9b-c50775a08ef3"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Vocal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="79" y="13" width="142" height="20" uuid="0c238080-433f-4997-bf50-a5b255678b17"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Presidente del Jurado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="356" y="110" width="83" height="22" uuid="f844d630-7d75-40d5-9d1e-cb80a52fc140"/>
+				<text><![CDATA[Lambayeque ,]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="440" y="110" width="40" height="20" uuid="0c20b331-cfdc-4f4c-91ff-3e3dae160185"/>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
